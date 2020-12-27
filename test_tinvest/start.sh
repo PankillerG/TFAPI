@@ -1,0 +1,1 @@
+docker run -v ~/HSE/3\ course/ml-trade-api/test_tinvest/:/app/ tinv_build

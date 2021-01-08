@@ -15,7 +15,7 @@ $ docker-compose -f docker-compose.app.yml up
 * Start a simple app example (producer and consumer) in a background:
 
 ```bash
-$ docker-compose -f docker-compose.app.yml up
+$ docker-compose -f docker-compose.app.yml up -d
 ```
 
 ## Usage

@@ -21,3 +21,11 @@ $ docker-compose -f docker-compose.kafka.yml up
 ```bash
 $ docker-compose -f docker-compose.kafka.yml up -d
 ```
+
+## Finish
+
+* To stop kafka-cluster:
+
+```bash
+$ docker-compose -f docker-compose.kafka.yml down
+```

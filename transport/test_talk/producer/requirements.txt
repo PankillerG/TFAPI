@@ -1,0 +1,2 @@
+tinvest
+kafka-python

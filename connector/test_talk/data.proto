@@ -1,0 +1,27 @@
+syntax = 'proto3';
+
+message CandlesRequest {
+    string figi = 1;
+    string from_ = 2;
+    string to_ = 3;
+    string interval = 4;
+}
+
+message Candle {
+    float o = 1;
+    float c = 2;
+    float l = 3;
+    float h = 4;
+    string time = 5;
+    int32 v = 6;
+}
+
+message Candles {
+    bool success = 2;
+    string error = 3;
+    repeated Candle candles = 1;
+}
+
+message Text {
+    string text = 1;
+}

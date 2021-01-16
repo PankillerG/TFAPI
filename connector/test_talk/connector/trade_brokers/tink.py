@@ -1,5 +1,5 @@
 import tinvest
-import data_pb2 as pb
+import trade_brokers.data_pb2 as pb
 
 class Client:
     client = {}

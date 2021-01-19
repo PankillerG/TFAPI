@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "basic_message_info.proto";
+
+message GetMarketCandles {
+    BasicMessageInfo basic_message_info = 1;
+    string figi = 2;
+    string from_ = 3;
+    string to_ = 4;
+    string interval = 5;
+}

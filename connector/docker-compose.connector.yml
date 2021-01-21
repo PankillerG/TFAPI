@@ -8,6 +8,8 @@ services:
       dockerfile: ./connector/Dockerfile
     environment:
       KAFKA_BROKER_ADRESS: kafka-broker:9092
+    env_file:
+      - tokens.env
 
 networks:
   default:

@@ -2,7 +2,7 @@ import os
 from kafka import KafkaProducer, KafkaConsumer
 
 from topics import connector_topics
-from message_distributor import message_distributor
+from message_distributor import MessageDistributor
 
 KAFKA_BROKER_ADRESS = os.environ.get('KAFKA_BROKER_ADRESS')
 
@@ -19,5 +19,6 @@ def main():
     consumer.subscribe(connector_topics)
 
     for message in consumer:
-        topic, message = message_distributor(message)
+        message_distributor = MessageDistributor()
+        topic, message = message_distributor.distribute_message(message)
         producer.send(topic, value=message.encode())

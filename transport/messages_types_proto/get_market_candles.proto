@@ -1,11 +1,29 @@
 syntax = "proto3";
 
 import "basic_message_info.proto";
+import "basic_request_info.proto";
+import "basic_response_info.proto";
 
 message GetMarketCandles {
     BasicMessageInfo basic_message_info = 1;
-    string figi = 2;
-    string from_ = 3;
-    string to_ = 4;
-    string interval = 5;
+    BasicRequestInfo basic_request_info = 2;
+    string figi = 3;
+    string from_ = 4;
+    string to_ = 5;
+    string interval = 6;
+}
+
+message Candle {
+    float o = 1;
+    float c = 2;
+    float l = 3;
+    float h = 4;
+    string time = 5;
+    int64 v = 6;
+}
+
+message GetMarketCandlesResponse {
+    BasicMessageInfo basic_message_info = 1;
+    BasicResponseInfo basic_response_info = 2;
+    repeated Candle candles = 3;
 }

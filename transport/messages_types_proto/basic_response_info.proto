@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+message BasicResponseInfo {
+    string status = 1;  // OK/error_code
+    string error = 2;   // text of error
+}

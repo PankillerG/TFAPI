@@ -20,5 +20,5 @@ def main():
 
     for message in consumer:
         message_distributor = MessageDistributor()
-        topic, message = message_distributor.distribute_message(message)
-        producer.send(topic, value=message.encode())
+        message, topic = message_distributor.distribute_message(message)
+        producer.send(topic, value=message)

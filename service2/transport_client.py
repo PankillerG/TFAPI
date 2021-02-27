@@ -1,6 +1,7 @@
 # from rest_module import TransportClient
 from rest_module import ConnectorClient
 import os
+from time import sleep
 
 def main():
     cc = ConnectorClient(use_sandbox=True, service_name='service2')

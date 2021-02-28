@@ -18,7 +18,7 @@ def main():
     )
     consumer.subscribe(connector_topics)
 
+    message_distributor = MessageDistributor()
     for message in consumer:
-        message_distributor = MessageDistributor()
         message, topic = message_distributor.distribute_message(message)
         producer.send(topic, value=message)

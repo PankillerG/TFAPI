@@ -23,11 +23,13 @@ def main():
 
     msg = pb.GetMarketCandles()
     msg.basic_message_info.type = 'REST'
-    msg.basic_message_info.response_topic = 'test_topic'
-    msg.figi = "my_figi"
-    msg.from_ = "my_from"
-    msg.to_ = "my_to"
-    msg.interval = "my_interval"
+    msg.basic_request_info.type = 'sync'
+    msg.basic_request_info.use_sandbox = True
+    msg.basic_request_info.response_topic = 'test_topic'
+    msg.figi = "BBG0013HGFT4"
+    msg.from_ = "2020-12-25T10:10:00.131642+03:00"
+    msg.to_ = "2020-12-25T10:15:00.131642+03:00"
+    msg.interval = "1min"
 
     while True:
         producer.send('connector.get.market.candles', value=msg.SerializeToString())

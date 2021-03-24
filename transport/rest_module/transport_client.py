@@ -28,11 +28,7 @@ class TransportClient:
         self.consumer.subscribe(topic)
 
     def poll(self, res):
-        # for message in self.consumer:
-        #     res[0] = message
-        #     return res
         res[0] = self.consumer.poll(timeout_ms=5000, max_records=10, update_offsets=True)
-        # print(res)
         return res
     
     def send_poll(self, topic, value, response_topic):

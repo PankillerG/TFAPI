@@ -1,18 +1,14 @@
-# FROM jupyter/datascience-notebook
-
-# WORKDIR /usr/ml2
-
-# ADD ./requirements.txt ./
-# RUN pip install -r requirements.txt
-
-# CMD 
-
 FROM python:3.8
 FROM jupyter/datascience-notebook
 WORKDIR $HOME
+
 # RUN python -m pip install --upgrade pip
+
 ADD ./ml2/requirements.txt ./requirements.txt
-ADD ./transport/rest_module ./rest_module/
+# ADD ./transport/rest_module ./rest_module/
+ADD ./connector/rest_module ./rest_module/
+ADD ./connector/schemas.py ./rest_module/schemas.py
+ADD ./transport/messages_types_python/ ./rest_module/
 
 RUN python -m pip  install -r requirements.txt
 # RUN python -m pip install --upgrade --no-deps --force-reinstall notebook

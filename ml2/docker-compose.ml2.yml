@@ -1,25 +1,8 @@
-# version: '3'
-
-# services:
-
-#   notebook:
-#     image: jupyter/datascience-notebook
-#     environment:
-#       KAFKA_BROKER_ADRESS: kafka-broker:9092
-#     ports:
-#       - 8888:8888
-
-# networks:
-#   default:
-#     external:
-#       name: kafka-network
-
 version: '3'
 
 services:
 
   ml2:
-    # build: '.'
     build:
       context: ../
       dockerfile: ./ml2/Dockerfile
@@ -28,7 +11,6 @@ services:
     ports:
         - "127.0.0.1:8888:8888"
     volumes:
-      # - ../../../.:/docker
       - ../:/docker
     working_dir: /docker
 

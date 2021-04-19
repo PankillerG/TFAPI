@@ -3,5 +3,6 @@ syntax = "proto3";
 message BasicRequestInfo {
     string type = 1;    // sync/async
     bool use_sandbox = 2;   // true/false 
-    string response_topic = 3;  // topic to response
+    string request_topic = 3; // topic of request
+    string response_topic = 4;  // topic to response
 }

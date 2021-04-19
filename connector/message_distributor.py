@@ -1,6 +1,9 @@
+import sys
+
 import trade_brokers.tinkoff.tinkoff as trade_broker
 import trade_brokers.tinkoff.tinkoff_request_caster as request_caster
 
+sys.path.append('transport/messages_types_python')
 import get_market_candles_pb2
 
 from typing import Union

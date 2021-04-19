@@ -1,9 +1,10 @@
-import os
+import sys, os
 
 import tinvest
 
 from . import tinkoff_response_caster as response_caster
 
+sys.path.append('transport/messages_types_python')
 import get_market_candles_pb2
 
 from typing import TypeVar, Union, NewType

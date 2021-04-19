@@ -1,3 +1,6 @@
+import sys
+
+sys.path.append('transport/messages_types_python')
 import get_market_candles_pb2
 
 from typing import TypeVar, List, Union, NewType

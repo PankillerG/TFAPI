@@ -2,7 +2,10 @@ import os
 import time
 import multiprocessing
 
+import random
+
 from kafka import KafkaProducer, KafkaConsumer
+from kafka.structs import TopicPartition
 
 from schemas import (
     KafkaMessage,
@@ -32,22 +35,18 @@ class TransportClient:
     # def subscribe(self, topic) -> None:
     #     self.consumer.subscribe(topic)
 
-    def poll(self, res) -> dict:
-        res[0] = self.consumer.poll(timeout_ms=5000, max_records=10, update_offsets=True)
-        return res
+    def poll(self):
+        pass
     
     def send_poll(self, pb: ProtoBufClass) -> dict:
-        self.consumer.subscribe(pb.basic_request_info.response_topic) 
-
-        manager = multiprocessing.Manager()
-        res = manager.dict()
-        th = multiprocessing.Process(target=self.poll, args= (res,))
-        th.start()
-
-        time.sleep(0.2)
+        topic_partition = TopicPartition(
+            pb.basic_request_info.response_topic,
+            0
+        )
+        self.consumer.assign([topic_partition])
+        pos = self.consumer.position(topic_partition)
         self.producer.send(pb.basic_request_info.request_topic, pb.SerializeToString())
-        th.join()
-
+        self.consumer.seek(topic_partition, pos)
+        res = self.consumer.poll(timeout_ms=5000, max_records=10)
         self.consumer.unsubscribe()
-
-        return res[0]
+        return res
